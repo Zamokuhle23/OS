@@ -13,7 +13,7 @@ int main(int argc, char **argv){
    }
    else
    {
-       int add = 0;
+       
        while(c=fgetc(fp))
        {  
           if(c==EOF) break;
