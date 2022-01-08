@@ -181,9 +181,7 @@ int main(int argc, char **argv){
    }
    
    for(i=0; i<PROCESS_NUM; i++) {
-        if(pid == 0) {  /* fork returns 0 in the child */
-            write(fd[1], &i, 1);  /* write one byte into the pipe */
-            depth += 1;
+        wait(NULL);
         }
     }
     close(fd[0]);
