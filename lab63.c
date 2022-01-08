@@ -27,7 +27,7 @@ int main(int argc, char **argv){
     int PROCESS_NUM = atoi(argv[3]);
     int pids[PROCESS_NUM];
     int pipes[PROCESS_NUM + 1][2];
-    int i,s=0;
+    int i,s=0,z=0;
    
    //unsigned char buffer[4096];
    DIR *d=opendir(argv[1]);
@@ -82,6 +82,7 @@ int main(int argc, char **argv){
             
           if(n < atoi(argv[3]) && isParent){
               pid = fork();
+               z++;
               pros[n] = getpid();
               
               //printf("PID in array %d and parent pid = %d \n", pros[n],getppid());
@@ -113,7 +114,7 @@ int main(int argc, char **argv){
                        char buffer[4096] = {0};
                        while(fgets(buffer,4096,readfile));
                        {
-                              printf("Writting to file %s by process %d \n",dir1->d_name,getpid());
+                              printf("Writting to file %s by process %d(%d)\n",dir1->d_name,getpid(),n);
                               fputs(buffer,writefile);
                               same = 0;                            
                               
